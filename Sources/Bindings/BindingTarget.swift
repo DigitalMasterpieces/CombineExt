@@ -31,4 +31,40 @@ public protocol BindingTarget: AnyObject {
 
 }
 
-#endif
+#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+import ObjectiveC.runtime
+
+/// Extends `NSObject` to provide a `cancellables` Set via associated objects,
+/// so that any `NSObject` subtype can be target of bindings.
+extension NSObject: BindingTarget {
+
+    private struct AssociatedKeys {
+        static var CancellablesKey = "CancellablesKey"
+    }
+
+    /// Helper for wrapping the ``Set<AnyCancellable>`` into an (associated) object.
+    private final class Wrapped<T> {
+        let value: T
+        init(_ x: T) {
+            value = x
+        }
+    }
+
+    @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    public var cancellables: Set<AnyCancellable> {
+        get {
+            if let cancellables = objc_getAssociatedObject(self, &NSObject.AssociatedKeys.CancellablesKey) as? Wrapped<Set<AnyCancellable>> {
+                return cancellables.value
+            } else {
+                let cancellables = Set<AnyCancellable>()
+                objc_setAssociatedObject(self, &NSObject.AssociatedKeys.CancellablesKey, Wrapped(cancellables), objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                return cancellables
+            }
+        }
+        set {
+            objc_setAssociatedObject(self, &NSObject.AssociatedKeys.CancellablesKey, Wrapped(newValue), objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+}
+#endif // os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+#endif // canImport(Combine)
