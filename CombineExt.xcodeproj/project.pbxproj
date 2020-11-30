@@ -23,6 +23,7 @@
 
 /* Begin PBXBuildFile section */
 		015B4AD8257585EA000057BE /* BindingTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015B4AD7257585EA000057BE /* BindingTarget.swift */; };
+		015B4ADE257588C4000057BE /* Bind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015B4ADD257588C4000057BE /* Bind.swift */; };
 		1970A8AA25246FBD00799AB6 /* FilterMany.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1970A8A925246FBD00799AB6 /* FilterMany.swift */; };
 		1970A8B42524730500799AB6 /* FilterManyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1970A8B32524730400799AB6 /* FilterManyTests.swift */; };
 		BF330EF624F1FFFE001281FC /* CombineSchedulers in Frameworks */ = {isa = PBXBuildFile; productRef = BF330EF524F1FFFE001281FC /* CombineSchedulers */; };
@@ -106,6 +107,7 @@
 
 /* Begin PBXFileReference section */
 		015B4AD7257585EA000057BE /* BindingTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingTarget.swift; sourceTree = "<group>"; };
+		015B4ADD257588C4000057BE /* Bind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bind.swift; sourceTree = "<group>"; };
 		1970A8A925246FBD00799AB6 /* FilterMany.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMany.swift; sourceTree = "<group>"; };
 		1970A8B32524730400799AB6 /* FilterManyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterManyTests.swift; sourceTree = "<group>"; };
 		BF330EF824F20032001281FC /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			children = (
 				BF330EF724F2001F001281FC /* Internal */,
 				OBJ_17 /* Amb.swift */,
+				015B4ADD257588C4000057BE /* Bind.swift */,
 				OBJ_18 /* AssignOwnership.swift */,
 				OBJ_19 /* AssignToMany.swift */,
 				OBJ_20 /* CombineLatestMany.swift */,
@@ -610,6 +613,7 @@
 				OBJ_95 /* RemoveAllDuplicates.swift in Sources */,
 				OBJ_96 /* SetOutputType.swift in Sources */,
 				OBJ_97 /* ShareReplay.swift in Sources */,
+				015B4ADE257588C4000057BE /* Bind.swift in Sources */,
 				OBJ_98 /* Toggle.swift in Sources */,
 				OBJ_99 /* WithLatestFrom.swift in Sources */,
 				OBJ_100 /* ZipMany.swift in Sources */,
