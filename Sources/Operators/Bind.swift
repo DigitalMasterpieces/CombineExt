@@ -5,6 +5,10 @@
 //  Created by Frank Schlegel on 30/11/2020.
 //  Copyright © 2020 Combine Community. All rights reserved.
 //
+//  The concept of Bindings is inspired by and the implementation
+//  heavily borrowed from ReactiveKit by Srđan Rašić. Thanks!
+//  (See https://github.com/DeclarativeHub/ReactiveKit#bindings)
+//
 
 #if canImport(Combine)
 import Combine
