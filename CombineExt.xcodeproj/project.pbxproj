@@ -22,6 +22,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		014E2B6425781ECC00E773C5 /* BindTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014E2B6325781ECC00E773C5 /* BindTests.swift */; };
 		015B4AD8257585EA000057BE /* BindingTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015B4AD7257585EA000057BE /* BindingTarget.swift */; };
 		015B4ADE257588C4000057BE /* Bind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015B4ADD257588C4000057BE /* Bind.swift */; };
 		1970A8AA25246FBD00799AB6 /* FilterMany.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1970A8A925246FBD00799AB6 /* FilterMany.swift */; };
@@ -106,6 +107,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		014E2B6325781ECC00E773C5 /* BindTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindTests.swift; sourceTree = "<group>"; };
 		015B4AD7257585EA000057BE /* BindingTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingTarget.swift; sourceTree = "<group>"; };
 		015B4ADD257588C4000057BE /* Bind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bind.swift; sourceTree = "<group>"; };
 		1970A8A925246FBD00799AB6 /* FilterMany.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMany.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				OBJ_41 /* AmbTests.swift */,
 				OBJ_42 /* AssignOwnershipTests.swift */,
 				OBJ_43 /* AssignToManyTests.swift */,
+				014E2B6325781ECC00E773C5 /* BindTests.swift */,
 				OBJ_44 /* CombineLatestManyTests.swift */,
 				OBJ_45 /* CreateTests.swift */,
 				OBJ_46 /* CurrentValueRelayTests.swift */,
@@ -569,6 +572,7 @@
 				OBJ_130 /* MapManyTests.swift in Sources */,
 				OBJ_131 /* MaterializeTests.swift in Sources */,
 				OBJ_132 /* OptionalTests.swift in Sources */,
+				014E2B6425781ECC00E773C5 /* BindTests.swift in Sources */,
 				OBJ_133 /* PartitionTests.swift in Sources */,
 				OBJ_134 /* PassthroughRelayTests.swift in Sources */,
 				OBJ_135 /* PrefixDurationTests.swift in Sources */,
