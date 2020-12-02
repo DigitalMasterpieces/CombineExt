@@ -24,11 +24,9 @@ import Combine
 ///
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public protocol BindingTarget: AnyObject {
-
     /// A "bag" to store subscriptions in that should be cancelled
     /// when `self` is deallocated.
     var cancellables: Set<AnyCancellable> { get set }
-
 }
 
 #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
@@ -37,7 +35,6 @@ import ObjectiveC.runtime
 /// Extends `NSObject` to provide a `cancellables` Set via associated objects,
 /// so that any `NSObject` subtype can be target of bindings.
 extension NSObject: BindingTarget {
-
     private struct AssociatedKeys {
         static var CancellablesKey = "CancellablesKey"
     }
@@ -45,8 +42,8 @@ extension NSObject: BindingTarget {
     /// Helper for wrapping the ``Set<AnyCancellable>`` into an (associated) object.
     private final class Wrapped<T> {
         let value: T
-        init(_ x: T) {
-            value = x
+        init(_ val: T) {
+            value = val
         }
     }
 

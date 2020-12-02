@@ -73,13 +73,13 @@ public extension Publisher where Self.Output == Void {
 }
 
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-extension Publisher where Self.Output == Void, Self.Failure == Never {
+public extension Publisher where Self.Output == Void, Self.Failure == Never {
     /// "Binds" the publisher to the target, i.e. the target receives values events
     /// and ensures that the subscription is cancelled with the target is deallocated.
     /// - Parameters:
     ///   - target: The target object to bind the publisher to.
     ///   - receiveValue: The closure to execute on receipt of a value. The parameter is the binding target.
-    public func bind<Target: BindingTarget>(to target: Target, receiveValue: @escaping (Target) -> Void) {
+    func bind<Target: BindingTarget>(to target: Target, receiveValue: @escaping (Target) -> Void) {
         sink { [weak target] in
             if let target = target { receiveValue(target) }
         }.store(in: &target.cancellables)
