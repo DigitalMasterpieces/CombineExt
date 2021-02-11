@@ -29,7 +29,7 @@ public protocol BindingTarget: AnyObject {
     var cancellables: Set<AnyCancellable> { get set }
 }
 
-#if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+#if canImport(ObjectiveC)
 import ObjectiveC.runtime
 
 /// Extends `NSObject` to provide a `cancellables` Set via associated objects,
@@ -63,5 +63,5 @@ extension NSObject: BindingTarget {
         }
     }
 }
-#endif // os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
+#endif // canImport(ObjectiveC)
 #endif // canImport(Combine)
