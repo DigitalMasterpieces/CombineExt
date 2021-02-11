@@ -42,6 +42,7 @@ All operators, utilities and helpers respect Combine's publisher contract, inclu
 * [nwise(_:) and pairwise()](#nwise)
 * [ignoreOutput(setOutputType:)](#ignoreOutputsetOutputType)
 * [ignoreFailure](#ignoreFailure)
+* [bind](#bind)
 
 ### Publishers
 * [AnyPublisher.create](#AnypublisherCreate)
@@ -681,6 +682,52 @@ subject.send(completion: .failure(.someError))
 2
 3
 .finished
+```
+
+### bind
+
+A binding is a subscription between a publisher and an object that implements the `BindingTarget` protocol. The lifetime of the subscription is in this case bound to the lifetime of the target—the subscription will be cancelled when the binding target gets deallocated.
+
+An object can conform to `BindingTarget` by providing a "bag" to store the cancellables of its bindings:
+
+```swift
+class BindableObject: BindingTarget {
+    var cancellables = Set<AnyCancellable>()
+}
+```
+
+**Note**: Every `NSObject` subclass already conforms to `BindingTarget` via extension.
+
+Bindings can be created in different ways like this (`self` is a `BindingTarget` here):
+
+```swift
+aPublisher.bind(to: self) { me, value in
+    me.doSomething(with: value)
+}
+
+aPublisher.bind(to: self
+                receiveCompletion: { me, completion in /* handle completion */ },
+                receiveValue: { me, value in me.doSomething(with: value) })
+
+aPublisher.bind(to: self, keyPath: \.property)
+```
+
+In many cases a binding can replace a `sink` or an `assign` while also providing a cleaner syntax and avoiding leaks caused by a strongly captured `self`.  So this
+
+```swift
+aPublisher.sink({ [weak self] value in
+    self?.doSomething(with: value)
+}).store(in: &cancellables)
+
+aPublisher.assign(to: \.value, on: self, ownership: .weak).store(in: &cancellables)
+```
+
+can be written as
+
+```swift
+aPublisher.bind(to: self) { $0.doSomething(with: $1) }
+
+aPublisher.bind(to: self, keyPath: \.value)
 ```
 
 ## Publishers
