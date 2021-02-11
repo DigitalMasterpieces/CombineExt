@@ -32,8 +32,8 @@ public extension Publisher {
 
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public extension Publisher where Self.Failure == Never {
-    /// "Binds" the publisher to the target, i.e. the target receives values events
-    /// and ensures that the subscription is cancelled with the target is deallocated.
+    /// "Binds" the publisher to the target, i.e. the target receives values
+    /// and ensures that the subscription is cancelled when the target is deallocated.
     /// - Parameters:
     ///   - target: The target object to bind the publisher to.
     ///   - receiveValue: The closure to execute on receipt of a value. The first parameter is the binding target.
@@ -50,8 +50,8 @@ public extension Publisher where Self.Failure == Never {
     /// the subscription and the target, in contrast to Combine's `assign(to:on:)`.
     /// See [this forum discussion](https://forums.swift.org/t/does-assign-to-produce-memory-leaks/29546)
     /// - Parameters:
+    ///   - target: The object that contains the property. The subscriber assigns the object's property every time it receives a new value.
     ///   - keyPath: A key path that indicates the property to assign.
-    ///   - target: The object that contains the property. The subscriber assigns the object’s property every time it receives a new value.
     func bind<Target: BindingTarget>(to target: Target, keyPath: ReferenceWritableKeyPath<Target, Self.Output>) {
         sink { [weak target] element in
             target?[keyPath: keyPath] = element
@@ -62,7 +62,7 @@ public extension Publisher where Self.Failure == Never {
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public extension Publisher where Self.Output == Void {
     /// "Binds" the publisher to the target, i.e. the target receives values and completion events
-    /// and ensures that the subscription is cancelled with the target is deallocated.
+    /// and ensures that the subscription is cancelled when the target is deallocated.
     /// - Parameters:
     ///   - target: The target object to bind the publisher to.
     ///   - receiveCompletion: The closure to execute on completion. The first parameter is the binding target.
@@ -79,7 +79,7 @@ public extension Publisher where Self.Output == Void {
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public extension Publisher where Self.Output == Void, Self.Failure == Never {
     /// "Binds" the publisher to the target, i.e. the target receives values events
-    /// and ensures that the subscription is cancelled with the target is deallocated.
+    /// and ensures that the subscription is cancelled when the target is deallocated.
     /// - Parameters:
     ///   - target: The target object to bind the publisher to.
     ///   - receiveValue: The closure to execute on receipt of a value. The parameter is the binding target.

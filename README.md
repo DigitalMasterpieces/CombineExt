@@ -688,7 +688,7 @@ subject.send(completion: .failure(.someError))
 
 A binding is a subscription between a publisher and an object that implements the `BindingTarget` protocol. The lifetime of the subscription is in this case bound to the lifetime of the target—the subscription will be cancelled when the binding target gets deallocated.
 
-An object can conform to `BindingTarget` by providing a providing a "bag" to store the cancellables of its bindings:
+An object can conform to `BindingTarget` by providing a "bag" to store the cancellables of its bindings:
 
 ```swift
 class BindableObject: BindingTarget {
